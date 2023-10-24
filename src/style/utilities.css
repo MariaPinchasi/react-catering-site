@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap');
+/* /////////////////////////// */
+/* ////////////RESET////////// */
+/* /////////////////////////// */
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+  }
+
+:root {
+    --primary-color:  rgb(112, 85, 116);
+    --primary-color-light: rgb(199, 194, 194);
+    --secondary-color: rgb(43, 2, 36);
+    --plum: plum;
+
+    --background-grey:rgb(71, 68, 68);
+    --grey: grey;
+    --light: rgb(201, 185, 185);
+    --dark-grey: #333;
+    --white:  #fff;
+
+    --light-background: rgb(243, 223, 167);
+
+
+}
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.7em;
+    font-size: 62.5%;
+}
+
+a {
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+h1, h2, h3 {
+    padding-bottom: 1rem;
+    font-weight: bolder;
+}
+  
+p {
+    margin: 1rem 0;
+}
+
+/* /////////////////////////// */
+/* /////////Utilities///////// */
+/* /////////////////////////// */
+.container {
+    margin: auto;
+    max-width: 120rem;
+}
+.btn {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: var(--white);
+    background: var(--primary-color);
+    padding: 1rem 1.5rem;
+    border-radius: 0.6rem;
+    border: none;
+    cursor: pointer;
+  }
+.btn-light {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+.btn:hover {
+    background: var(--plum);
+    color: var(--dark-grey);
+}
+.small-btn{
+    padding: 0.3rem;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0 0.5rem;
+}
+.update-btn{
+    width: 8rem;
+    text-align: center;
+    margin: 2rem 20rem;
+  }
