@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { deleteDish, getMenu } from "../api/api.js";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 const Occasion = ({ id, occasionClass }) => {
     const navigate = useNavigate();
     const [menu, setMenu] = useState({});
     const [dishes, setDishes] = useState([]);
+    const { user } = useGlobalContext();
+
     const fetchMenu = async () => {
         const menuData = await getMenu(id);
         localStorage.setItem('menuType', JSON.stringify(id));
@@ -41,14 +44,17 @@ const Occasion = ({ id, occasionClass }) => {
                                 <div className="dish-info">
                                     <h3>{name}</h3>
                                     <p>{description}</p>
-                                    <Link to={`/dishes/${id}/edit`} className="btn small-btn">Edit</Link>
-                                    <button onClick={() => handleDelete(id)} className="btn small-btn">Delete</button>
+                                    {user?.isAdmin &&
+                                        <Link to={`/dishes/${id}/edit`} className="btn small-btn">Edit</Link>}
+                                    {user?.isAdmin &&
+                                        <button onClick={() => handleDelete(id)} className="btn small-btn">Delete</button>}
                                 </div>
                             </article>
                         )
                     })}
                 </div>
-                <Link to={`/add`} className="btn small-btn add-btn">Add Dish</Link>
+                {user?.isAdmin &&
+                    <Link to={`/add`} className="btn small-btn add-btn">Add Dish</Link>}
             </section>
         </>
     )

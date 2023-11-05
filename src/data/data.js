@@ -21,11 +21,7 @@ export const links = [
         url: "/elegant",
         text: "Elegant Occasions"
     },
-    {
-        id: 5,
-        url: "/contact",
-        text: "Contact"
-    }
+
 ]
 
 export const optionsData = [

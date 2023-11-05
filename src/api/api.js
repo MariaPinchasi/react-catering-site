@@ -1,14 +1,6 @@
 import axios from "axios";
 
 const URL = "https://651eb21444a3a8aa4768d384.mockapi.io/menus";
-// export const getAllMenus = async () => {
-//     try {
-//         const res = await axios.get(URL);
-//         return res.data;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 
 export const getMenu = async (menuId) => {
     try {
@@ -31,7 +23,7 @@ export const updateDish = async (dish, dishId) => {
     const menuData = await getMenu(menuId);
     let dishToUpdateIndex;
     const dishToUpdate = menuData.dishes.find((currentDish, i) => {
-        if ((currentDish.id).toString() === dishId) {
+        if ((currentDish.id).toString() === dishId.toString()) {
             dishToUpdateIndex = i;
             return currentDish;
         }
@@ -52,6 +44,5 @@ export const deleteDish = async (dishId) => {
     const menuData = await getMenu(menuId);
     const remainingDishes = menuData.dishes.filter(dish => (dish.id).toString() !== dishId);
     menuData.dishes = remainingDishes;
-    console.log(menuData);
     axios.put(`${URL}/${menuId}`, menuData);
 }

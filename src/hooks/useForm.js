@@ -1,7 +1,49 @@
 import { useNavigate } from 'react-router'
+import { useState } from 'react'
+import { v4 as uuid } from "uuid";
 
-const useForm = (dish, setDish, setErrors, apiFunction) => {
+const useForm = (apiFunction) => {
     const navigate = useNavigate();
+
+    const [dish, setDish] = useState({
+        id: uuid().slice(0, 8),
+        name: '',
+        description: '',
+        image: '',
+    });
+
+    const [errors, setErrors] = useState({
+        name: null,
+        description: null,
+        image: null,
+    });
+
+    const formData = [
+        {
+            id: '1',
+            label: 'Name',
+            type: 'text',
+            name: 'name',
+            dish: dish.name,
+            error: errors.name,
+        },
+        {
+            id: '2',
+            label: 'Description',
+            type: 'text',
+            name: 'description',
+            dish: dish.description,
+            error: errors.description,
+        },
+        {
+            id: '3',
+            label: 'Image',
+            type: 'text',
+            name: 'image',
+            dish: dish.image,
+            error: errors.image,
+        },
+    ]
     const handleChange = (e) => {
         setDish({
             ...dish,
@@ -39,7 +81,7 @@ const useForm = (dish, setDish, setErrors, apiFunction) => {
             navigate('/');
         }
     };
-    return { handleChange, handleSubmit }
+    return { handleChange, handleSubmit, setDish, formData }
 }
 
 export default useForm

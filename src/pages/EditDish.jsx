@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { getDish, updateDish } from '../api/api';
 import Form from '../components/Form';
@@ -6,17 +6,7 @@ import useForm from '../hooks/useForm';
 
 const EditDish = () => {
     const { dishId } = useParams();
-
-    const [dish, setDish] = useState({
-        name: '',
-        description: '',
-        image: '',
-    });
-    const [errors, setErrors] = useState({
-        name: null,
-        description: null,
-        image: null,
-    });
+    const { handleChange, handleSubmit, setDish, formData } = useForm(updateDish)
 
     const fetchDish = async () => {
         const dishData = await getDish(dishId);
@@ -26,12 +16,12 @@ const EditDish = () => {
         fetchDish();
     }, []);
 
-    const { handleChange, handleSubmit } = useForm(dish, setDish, setErrors, updateDish)
+
 
     return (
         <div className="edit-dish-container">
             <h2>Edit Dish</h2>
-            <Form handleChange={handleChange} handleSubmit={handleSubmit} dish={dish} errors={errors} btnText='Update' />
+            <Form handleChange={handleChange} handleSubmit={handleSubmit} btnText='Update' formData={formData} />
         </div>
     )
 }

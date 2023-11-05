@@ -5,10 +5,11 @@ import {
   About,
   Casual,
   Elegant,
-  Contact,
+  Login,
   NotFound,
   EditDish,
-  AddDish
+  AddDish,
+  Register
 } from './pages';
 
 import SharedLayout from './components/SharedLayout';
@@ -48,8 +49,12 @@ const routes = [
         element: <AddDish />,
       },
       {
-        path: 'contact',
-        element: <Contact />,
+        path: 'Login',
+        element: <Login />,
+      },
+      {
+        path: 'Register',
+        element: <Register />,
       },
     ]
   },

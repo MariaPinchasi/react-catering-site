@@ -1,19 +1,12 @@
 import Input from "./Input"
 
-const dishFormData = [
-    {
-        label: 'Name',
-        type: 'name',
 
-
-    }
-]
-const Form = ({ handleSubmit, handleChange, dish, errors, btnText }) => {
+const Form = ({ handleSubmit, handleChange, btnText, formData }) => {
     return (
         <form onSubmit={handleSubmit}>
-            <Input label='Name' type='name' dish={dish.name} error={errors.name} handleChange={handleChange} />
-            <Input label='Description' type='description' dish={dish.description} error={errors.description} handleChange={handleChange} />
-            <Input label='Image' type='image' dish={dish.image} error={errors.image} handleChange={handleChange} />
+            {formData.map(data => {
+                return <Input key={data.id} {...data} handleChange={handleChange} />
+            })}
             <button className="btn update-btn" type="submit">{btnText}</button>
         </form>
     )
