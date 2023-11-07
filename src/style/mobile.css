@@ -1,0 +1,75 @@
+.navbar {
+    position:static;
+    flex-direction: column;
+    align-items: normal;
+    text-align: center;
+}
+.nav-links{
+    flex-direction: column;
+    align-items: normal;
+}
+.navbar ul li a {
+    padding: 0.8rem;
+    border-bottom:white dotted 1px ;
+}
+.log-in-and-out{
+    flex-direction: column;
+    padding: 0.5rem 0;
+}
+.intro {
+    height: 60vh;
+}
+.intro .intro-content {
+    padding-top: 6rem;
+}
+.intro .intro-content h1 {
+    font-size: 1.8rem;
+}
+.intro .intro-content h2{
+    font-size: 2.4rem;
+}
+.options {
+    display: block;
+    height: auto;
+}
+.option {
+    width: 100%;
+    padding: 5px;
+}
+
+
+.about-us img, .about-chef img  {
+    display: none;
+}
+
+.type-info::before{
+    opacity: 0.4;
+}
+.type-info .type-info-content{
+    padding: 2rem;
+}
+
+.menu-info{
+    grid-template-columns: repeat(1,1fr);
+    gap: 1rem;
+    padding: 1rem ;
+}
+.dish-container{
+    gap: 1rem;
+    width: 25rem;
+}
+
+.edit-dish-container form{
+ width: 28rem;
+ margin: 0 auto;
+}
+.input-group input{
+    width: 28rem;
+}
+.update-btn{
+    margin: 2rem 10rem;
+}
+.add-btn{
+    width: 25rem;
+    margin: 1rem 5rem;
+}

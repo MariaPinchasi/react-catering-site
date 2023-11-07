@@ -14,8 +14,8 @@ export const getMenu = async (menuId) => {
 export const getDish = async (dishId) => {
     const menuId = JSON.parse(localStorage.getItem('menuType'));
     const menuData = await getMenu(menuId);
-    const dishToEdit = menuData.dishes.filter(dish => (dish.id).toString() === dishId);
-    return dishToEdit[0];
+    const dishToEdit = menuData.dishes.find(dish => (dish.id).toString() === dishId.toString());
+    return dishToEdit;
 }
 
 export const updateDish = async (dish, dishId) => {
@@ -42,7 +42,7 @@ export const addDish = async (dish) => {
 export const deleteDish = async (dishId) => {
     const menuId = JSON.parse(localStorage.getItem('menuType'));
     const menuData = await getMenu(menuId);
-    const remainingDishes = menuData.dishes.filter(dish => (dish.id).toString() !== dishId);
+    const remainingDishes = menuData.dishes.filter(dish => (dish.id).toString() !== dishId.toString());
     menuData.dishes = remainingDishes;
     axios.put(`${URL}/${menuId}`, menuData);
 }

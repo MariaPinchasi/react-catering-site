@@ -24,7 +24,6 @@ const Register = () => {
         <section className="edit-dish-container">
             <h2>Registration</h2>
             <Form handleChange={handleChange} handleSubmit={handleSubmit} btnText='Join' formData={formData} />
-            <p className="login-info">for admin permissions enter: user: admin, password: admin-pass</p>
             {userErr && <p className="error-message">{userErr}</p>}
         </section>
     )

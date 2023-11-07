@@ -32,7 +32,7 @@ const Login = () => {
         <section className="edit-dish-container">
             <h2>Log In</h2>
             <Form handleChange={handleChange} handleSubmit={handleSubmit} btnText='Log In' formData={formData} />
-            <p className="login-info">for admin permissions enter: user: admin, password: adminpass</p>
+            <p className="login-info">for admin permissions enter: user: admin, password: admin-pass</p>
             {userErr && <p className="error-message">{userErr}</p>}
         </section>
     )
