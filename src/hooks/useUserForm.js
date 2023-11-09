@@ -20,7 +20,7 @@ const useUserForm = (apiFunction) => {
             label: 'User Name',
             type: 'text',
             name: 'name',
-            dish: userFormData.name,
+            value: userFormData.name,
             error: errors.name,
         },
         {
@@ -28,7 +28,7 @@ const useUserForm = (apiFunction) => {
             label: 'Email',
             type: 'email',
             name: 'email',
-            dish: userFormData.email,
+            value: userFormData.email,
             error: errors.email,
         },
         {
@@ -36,7 +36,7 @@ const useUserForm = (apiFunction) => {
             label: 'Password',
             type: 'password',
             name: 'password',
-            dish: userFormData.password,
+            value: userFormData.password,
             error: errors.password,
         },
     ]

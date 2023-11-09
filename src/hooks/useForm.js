@@ -24,7 +24,7 @@ const useForm = (apiFunction) => {
             label: 'Name',
             type: 'text',
             name: 'name',
-            dish: dish.name,
+            value: dish.name,
             error: errors.name,
         },
         {
@@ -32,7 +32,7 @@ const useForm = (apiFunction) => {
             label: 'Description',
             type: 'text',
             name: 'description',
-            dish: dish.description,
+            value: dish.description,
             error: errors.description,
         },
         {
@@ -40,7 +40,7 @@ const useForm = (apiFunction) => {
             label: 'Image',
             type: 'text',
             name: 'image',
-            dish: dish.image,
+            value: dish.image,
             error: errors.image,
         },
     ]
