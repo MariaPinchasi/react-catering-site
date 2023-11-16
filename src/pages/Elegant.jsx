@@ -3,7 +3,7 @@ import Occasion from "../components/Occasion"
 const Elegant = () => {
     return (
         <>
-            <Occasion id='2' occasionClass='container type-info elegant' />
+            <Occasion menuId='elegant' occasionClass='container type-info elegant' />
         </>
     )
 }

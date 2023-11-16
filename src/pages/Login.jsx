@@ -17,8 +17,8 @@ const Login = () => {
             setUserErr("Email does not exist in our systems, Please register");
         }
         else {
-            if (userData.name !== userFormData.name || userData.password !== userFormData.password) {
-                setUserErr("Name or password doesn't match the email provided");
+            if (userData.password !== userFormData.password) {
+                setUserErr("Password doesn't match the email provided");
             }
             else {
                 setUser(userData);
@@ -26,12 +26,12 @@ const Login = () => {
             }
         }
     }
-    const { handleChange, handleSubmit, formData } = useUserForm(login)
+    const { handleChange, handleSubmit, formDataLog } = useUserForm(login, 'login')
 
     return (
         <section className="edit-dish-container">
             <h2>Log In</h2>
-            <Form handleChange={handleChange} handleSubmit={handleSubmit} btnText='Log In' formData={formData} />
+            <Form handleChange={handleChange} handleSubmit={handleSubmit} btnText='Log In' formData={formDataLog} />
             <p className="login-info">for admin permissions enter: user: admin, password: admin-pass</p>
             {userErr && <p className="error-message">{userErr}</p>}
         </section>

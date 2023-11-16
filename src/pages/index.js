@@ -7,11 +7,14 @@ import NotFound from "./NotFound";
 import EditDish from "./EditDish";
 import AddDish from "./AddDish";
 import Register from "./Register";
+import CreateOccasion from "./CreateOccasion";
+
 export {
     Home,
     About,
     Casual,
     Elegant,
+    CreateOccasion,
     EditDish,
     Login,
     Register,

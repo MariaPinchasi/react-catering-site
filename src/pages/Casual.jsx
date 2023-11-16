@@ -1,9 +1,10 @@
+import { useParams } from "react-router-dom";
 import Occasion from "../components/Occasion"
 
 
 const Casual = () => {
     return (
-        <Occasion id='1' occasionClass='container type-info' />
+        <Occasion menuId='casual' occasionClass='container type-info' />
     )
 }
 

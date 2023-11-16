@@ -1,7 +1,14 @@
 import axios from "axios";
 
 const URL = "https://651eb21444a3a8aa4768d384.mockapi.io/menus";
-
+export const getAllMenus = async () => {
+    try {
+        const res = await axios.get(URL);
+        return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
 export const getMenu = async (menuId) => {
     try {
         const res = await axios.get(`${URL}/${menuId}`);

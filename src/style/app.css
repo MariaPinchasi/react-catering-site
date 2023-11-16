@@ -238,7 +238,7 @@ color: var(--white);
     color: var(--background-grey);
     font-weight: 500;
   }
-  .input-group input{
+  .input-group input, .input-group select{
     display: block;
     padding: 0.5rem;
     width: 50rem;
@@ -253,6 +253,26 @@ color: var(--white);
   color: red;
   font-size: 0.8rem;
   }
+  /* /////////////////create-tour-own/////// */
+  .choosing-dish{
+    width:30rem;
+  }
+  .choosing-dish .dish-info .checkbox{
+    width: 30rem;
+    margin-bottom: 2rem ;
+  }
+  .choosing-dish .dish-info{
+    padding-top: 0;
+  }
+  .choosing-dish .dish-info p{
+    width: 15rem;
+  }
+  /* .dishes-choosing-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+  } */
+
 /* //////////////////footer ///////////////////////*/
 .footer{
     background-color: var(--grey);

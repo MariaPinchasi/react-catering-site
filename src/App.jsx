@@ -9,7 +9,8 @@ import {
   NotFound,
   EditDish,
   AddDish,
-  Register
+  Register,
+  CreateOccasion
 } from './pages';
 
 import SharedLayout from './components/SharedLayout';
@@ -43,6 +44,10 @@ const routes = [
       {
         path: 'elegant',
         element: <Elegant />,
+      },
+      {
+        path: 'createOccasion',
+        element: <CreateOccasion />,
       },
       {
         path: 'add',

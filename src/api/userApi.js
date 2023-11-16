@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://653e1d7af52310ee6a9a96ea.mockapi.io/users";
+const URL = "https://651eb21444a3a8aa4768d384.mockapi.io/users";
 
 export const postUser = (user) => {
     axios.post(URL, user)
@@ -19,4 +19,10 @@ export const getUser = async (userEmail) => {
     const users = await getUsers();
     const user = users.find(user => user.email === userEmail);
     return user;
+}
+
+export const addOccasion = async (occasion, user) => {
+    const userData = { ...user };
+    userData.occasions.push(occasion);
+    axios.put(`${URL}/${user.id}`, userData);
 }

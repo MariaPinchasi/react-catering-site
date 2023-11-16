@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useUserForm = (apiFunction) => {
+const useUserForm = (apiFunction, type) => {
 
     const [userFormData, setUserFormData] = useState({
         name: "",
@@ -14,7 +14,7 @@ const useUserForm = (apiFunction) => {
         email: null,
         password: null
     })
-    const formData = [
+    const formDataReg = [
         {
             id: '1',
             label: 'User Name',
@@ -23,6 +23,24 @@ const useUserForm = (apiFunction) => {
             value: userFormData.name,
             error: errors.name,
         },
+        {
+            id: '2',
+            label: 'Email',
+            type: 'email',
+            name: 'email',
+            value: userFormData.email,
+            error: errors.email,
+        },
+        {
+            id: '3',
+            label: 'Password',
+            type: 'password',
+            name: 'password',
+            value: userFormData.password,
+            error: errors.password,
+        },
+    ]
+    const formDataLog = [
         {
             id: '2',
             label: 'Email',
@@ -58,7 +76,7 @@ const useUserForm = (apiFunction) => {
         let isValid = true;
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const newErrors = {};
-        if (userFormData.name.length < 3) {
+        if (type !== "login" && userFormData.name.length < 3) {
             newErrors.name = "name must bo at least 3 characters long";
             isValid = false;
         }
@@ -75,7 +93,7 @@ const useUserForm = (apiFunction) => {
             apiFunction(userFormData);
         }
     };
-    return { handleChange, handleSubmit, formData }
+    return { handleChange, handleSubmit, formDataReg, formDataLog }
 
 
 }

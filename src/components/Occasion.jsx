@@ -3,15 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { deleteDish, getMenu } from "../api/api.js";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 
-const Occasion = ({ id, occasionClass }) => {
+const Occasion = ({ menuId, occasionClass }) => {
     const navigate = useNavigate();
     const [menu, setMenu] = useState({});
     const [dishes, setDishes] = useState([]);
     const { user } = useGlobalContext();
 
     const fetchMenu = async () => {
-        const menuData = await getMenu(id);
-        localStorage.setItem('menuType', JSON.stringify(id));
+        const menuData = await getMenu(menuId);
+        localStorage.setItem('menuType', JSON.stringify(menuId));
         setMenu(menuData);
         setDishes(menuData.dishes);
     }

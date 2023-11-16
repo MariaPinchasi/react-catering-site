@@ -18,12 +18,12 @@ const Register = () => {
             navigate('/Login');
         }
     }
-    const { handleChange, handleSubmit, formData } = useUserForm(register)
+    const { handleChange, handleSubmit, formDataReg } = useUserForm(register)
 
     return (
         <section className="edit-dish-container">
             <h2>Registration</h2>
-            <Form handleChange={handleChange} handleSubmit={handleSubmit} btnText='Join' formData={formData} />
+            <Form handleChange={handleChange} handleSubmit={handleSubmit} btnText='Join' formData={formDataReg} />
             {userErr && <p className="error-message">{userErr}</p>}
         </section>
     )
