@@ -1,19 +1,21 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
+
 import {
   Home,
   About,
-  Casual,
-  Elegant,
   Login,
   NotFound,
   EditDish,
   AddDish,
   Register,
-  CreateOccasion
+  CreateOccasion,
+  MyOccasions,
+  Message
 } from './pages';
 
 import SharedLayout from './components/SharedLayout';
+import Occasion from './components/Occasion';
 
 const routes = [
   {
@@ -29,11 +31,11 @@ const routes = [
         element: <About />,
       },
       {
-        path: 'casual',
-        element: <Casual />,
+        path: ':menuId',
+        element: <Occasion />,
       },
       {
-        path: 'dishes',
+        path: ':menuId/dishes',
         children: [
           {
             path: ':dishId/edit',
@@ -42,15 +44,15 @@ const routes = [
         ]
       },
       {
-        path: 'elegant',
-        element: <Elegant />,
-      },
-      {
         path: 'createOccasion',
         element: <CreateOccasion />,
       },
       {
-        path: 'add',
+        path: 'myOccasions',
+        element: <MyOccasions />,
+      },
+      {
+        path: ':menuId/add',
         element: <AddDish />,
       },
       {
@@ -61,12 +63,17 @@ const routes = [
         path: 'Register',
         element: <Register />,
       },
+      {
+        path: 'Message',
+        element: <Message />,
+      },
+      {
+        path: '*',
+        element: <NotFound />
+      }
     ]
-  },
-  {
-    path: '*',
-    element: <NotFound />
   }
+
 ];
 
 function App() {

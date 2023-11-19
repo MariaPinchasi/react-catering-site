@@ -40,24 +40,8 @@ const useUserForm = (apiFunction, type) => {
             error: errors.password,
         },
     ]
-    const formDataLog = [
-        {
-            id: '2',
-            label: 'Email',
-            type: 'email',
-            name: 'email',
-            value: userFormData.email,
-            error: errors.email,
-        },
-        {
-            id: '3',
-            label: 'Password',
-            type: 'password',
-            name: 'password',
-            value: userFormData.password,
-            error: errors.password,
-        },
-    ]
+    const formDataLog = formDataReg.slice(1);
+
     const handleChange = (e) => {
         setUserFormData({
             ...userFormData,

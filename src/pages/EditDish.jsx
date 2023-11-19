@@ -5,11 +5,11 @@ import Form from '../components/Form';
 import useForm from '../hooks/useForm';
 
 const EditDish = () => {
-    const { dishId } = useParams();
-    const { handleChange, handleSubmit, setDish, formData } = useForm(updateDish)
+    const { menuId, dishId } = useParams();
+    const { handleChange, handleSubmit, setDish, formData } = useForm(updateDish, menuId)
 
     const fetchDish = async () => {
-        const dishData = await getDish(dishId);
+        const dishData = await getDish(menuId, dishId);
         setDish(dishData);
     }
     useEffect(() => {

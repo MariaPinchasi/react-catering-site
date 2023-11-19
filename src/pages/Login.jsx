@@ -21,6 +21,7 @@ const Login = () => {
                 setUserErr("Password doesn't match the email provided");
             }
             else {
+                localStorage.setItem('userData', JSON.stringify(userData))
                 setUser(userData);
                 navigate('/');
             }

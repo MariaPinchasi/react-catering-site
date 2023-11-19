@@ -22,7 +22,23 @@ export const getUser = async (userEmail) => {
 }
 
 export const addOccasion = async (occasion, user) => {
+    const admin = await getUser('admin@gmail.com');
     const userData = { ...user };
+    admin.occasions.push({ ...occasion, userEmail: user.email });
     userData.occasions.push(occasion);
     axios.put(`${URL}/${user.id}`, userData);
+    axios.put(`${URL}/1`, admin);
+}
+
+export const approveOccasion = async (occasionId, userEmail) => {
+    const user = await getUser(userEmail);
+    const updatedOccasions = user.occasions.map((occasion) => {
+        if (occasion.id === occasionId) {
+            occasion.isApproved = true;
+        }
+        return occasion;
+    });
+    user.occasions = [...updatedOccasions];
+    axios.put(`${URL}/${user.id}`, user);
+
 }

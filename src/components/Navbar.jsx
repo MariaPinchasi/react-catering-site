@@ -11,14 +11,14 @@ const Navbar = () => {
             <div className="links">
                 <ul className="nav-links">
                     {links.map(link => {
-                        const { id, url, text } = link;
+                        const { id, url, text, isUserRequired } = link;
                         return (
                             <li key={id}>
-                                <NavLink
+                                {(!isUserRequired || user) && <NavLink
                                     to={url}
                                     className={({ isActive }) => isActive ? 'active' : undefined}>
                                     {text}
-                                </NavLink>
+                                </NavLink>}
                             </li>
                         )
                     })}

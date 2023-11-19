@@ -253,7 +253,7 @@ color: var(--white);
   color: red;
   font-size: 0.8rem;
   }
-  /* /////////////////create-tour-own/////// */
+  /* /////////////////create-your-own/////// */
   .choosing-dish{
     width:30rem;
   }
@@ -272,7 +272,49 @@ color: var(--white);
     grid-template-columns: repeat(2,1fr);
     gap: 2rem;
   } */
-
+  /* /////////////////my-occasions/////// */
+  .occasions-list{
+    margin: 2rem 5rem;
+    text-align: center;
+  }
+ 
+  .occasions-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+  }
+ 
+  .occasion-container{
+    width: 20rem;
+    height: 20rem;
+    padding: 2rem;
+    background-color: var(--primary-color-light);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: flex-start;
+    text-align: left;
+}
+.occasion-container h2{
+    color: var(--primary-color);
+    align-self: center;
+  }
+  .occasion-container h3{
+    align-self: left;
+  }
+  .occasion-container h4{
+    color: var(--background-grey);
+    margin-bottom: 0.5rem;
+    padding-left: 2rem;
+  }
+/* //////////////////message ///////////////////////*/
+.message{
+    text-align: center;
+    font-size: 2rem;
+    padding: 15rem;
+    background-color: var(--light);
+}
 /* //////////////////footer ///////////////////////*/
 .footer{
     background-color: var(--grey);

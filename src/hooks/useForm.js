@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router'
 import { useState } from 'react'
 import { v4 as uuid } from "uuid";
+import { useGlobalContext } from './useGlobalContext';
 
-const useForm = (apiFunction) => {
+const useForm = (apiFunction, menuId) => {
     const navigate = useNavigate();
+    const { isApiUpdates, setIsApiUpdates } = useGlobalContext();
 
     const [dish, setDish] = useState({
         id: uuid().slice(0, 8),
@@ -77,8 +79,9 @@ const useForm = (apiFunction) => {
         }
         setErrors(newErrors);
         if (isValid) {
-            apiFunction(dish, dish.id);
-            navigate('/');
+            apiFunction(dish, menuId, dish.id);
+            setIsApiUpdates(!isApiUpdates);
+            navigate(`/Message`);
         }
     };
     return { handleChange, handleSubmit, setDish, formData }

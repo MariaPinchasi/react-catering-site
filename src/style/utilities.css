@@ -21,6 +21,8 @@
     --white:  #fff;
 
     --light-background: rgb(243, 223, 167);
+    --green-color:  rgb(87, 178, 67);
+
 
 
 }
@@ -76,9 +78,14 @@ p {
     font-size: 0.8rem;
     text-align: center;
     margin: 0 0.5rem;
+    align-self: center;
 }
 .update-btn{
     width: 8rem;
     text-align: center;
     margin: 2rem 20rem;
   }
+.approved-btn{
+    background-color: var(--green-color);
+    align-self: center;
+}
