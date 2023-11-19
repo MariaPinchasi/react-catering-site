@@ -1,6 +1,5 @@
-import React from 'react'
 
-const Message = ({ message }) => {
+const Message = () => {
     return (
         <div className='message'>Menu Updated</div>
     )
