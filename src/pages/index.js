@@ -7,7 +7,7 @@ import AddDish from "./AddDish";
 import Register from "./Register";
 import CreateOccasion from "./CreateOccasion";
 import MyOccasions from "./MyOccasions";
-import Message from "./message";
+import Message from "./Message";
 export {
     Home,
     About,
