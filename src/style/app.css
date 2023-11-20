@@ -96,6 +96,23 @@ color: var(--white);
 .bg-primary h1{
     color: var(--white);
 }
+.login-request{
+    text-align: center;
+    color: var(--background-grey);
+    animation: animate1 2s 100 ;
+}
+@keyframes animate1 {
+    0%{
+        background-color: var(--primary-color-light);
+    }
+    50%{
+        background-color: var(--primary-color);
+    }
+
+    100%{
+        background-color: var(--primary-color-light);
+    }
+}
 /* /////////////////about////////////////////////// */
 .about-us{
     height: 25rem;
@@ -286,7 +303,7 @@ color: var(--white);
  
   .occasion-container{
     width: 20rem;
-    height: 20rem;
+    height: 25rem;
     padding: 2rem;
     background-color: var(--primary-color-light);
     border-radius: 2rem;

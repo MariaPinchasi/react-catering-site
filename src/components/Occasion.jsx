@@ -8,6 +8,7 @@ const Occasion = () => {
     const navigate = useNavigate();
     const [menu, setMenu] = useState({});
     const [dishes, setDishes] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const { user, isApiUpdates, setIsApiUpdates } = useGlobalContext();
 
     useEffect(() => {
@@ -15,6 +16,7 @@ const Occasion = () => {
             const menuData = await getMenu(menuId);
             setMenu(menuData);
             setDishes(menuData.dishes);
+            setIsLoading(false);
         }
         fetchMenu();
     }, [menuId, isApiUpdates]);
@@ -23,6 +25,9 @@ const Occasion = () => {
         deleteDish(menuId, dishId);
         setIsApiUpdates(!isApiUpdates);
         navigate(`/Message`);
+    }
+    if (isLoading) {
+        return <div className='message'>Loading...</div>
     }
     return (
         <>

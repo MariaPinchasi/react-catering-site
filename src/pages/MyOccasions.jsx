@@ -6,17 +6,21 @@ import NewOccasion from '../components/NewOccasion';
 const MyOccasions = () => {
     const { user } = useGlobalContext();
     const [occasions, setOccasions] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchMenus = async () => {
         const userData = await getUser(user.email);
         setOccasions(userData.occasions);
+        setIsLoading(false);
     }
 
     useEffect(() => {
         fetchMenus();
     }, [user]);
 
-
+    if (isLoading) {
+        return <div className='message'>Loading...</div>
+    }
     return (
         <main className=' occasions-list'>
             <h1>My Occasions</h1>

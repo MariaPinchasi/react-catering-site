@@ -8,6 +8,7 @@ const CreateOccasion = () => {
 
     const [menus, setMenus] = useState([]);
     const [dishes, setDishes] = useState([]);
+    const [query, setQuery] = useState("");
     const { occasion, checkedState, errors, handleChange, handleSubmit, handleCheckedChange } = useCreateOccasionForm(dishes)
 
 
@@ -46,8 +47,12 @@ const CreateOccasion = () => {
 
                 <div className="input-group">
                     <label>Choose your dishes</label>
+                    <input
+                        type="text"
+                        placeholder="search..."
+                        onChange={(e) => setQuery(e.target.value)} />
                     <div className="dishes-choosing-container">
-                        {dishes.map((dish, index) => {
+                        {dishes.filter((dish) => dish.name.toLowerCase().includes(query)).map((dish, index) => {
                             const { id, name, description, image } = dish;
                             return (
                                 <article className="dish-container choosing-dish" key={id}>

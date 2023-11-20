@@ -45,7 +45,10 @@ const Navbar = () => {
                     <Link
                         to='/'
                         className='btn small-btn'
-                        onClick={() => { setUser(null) }}>
+                        onClick={() => {
+                            localStorage.removeItem('userData')
+                            setUser(null)
+                        }}>
                         Log Out
                     </Link>
                 }
