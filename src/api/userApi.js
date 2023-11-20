@@ -21,8 +21,8 @@ export const getUser = async (userEmail) => {
     return user;
 }
 
-export const addOccasion = async (occasion, user) => {
-    const admin = await getUser('admin@gmail.com');
+export const addOccasion = async (occasion, user, adminData) => {
+    const admin = { ...adminData };
     const userData = { ...user };
     admin.occasions.push({ ...occasion, userEmail: user.email });
     userData.occasions.push(occasion);

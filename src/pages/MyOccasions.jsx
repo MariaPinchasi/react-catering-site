@@ -3,19 +3,21 @@ import { useGlobalContext } from '../hooks/useGlobalContext';
 import { getUser } from '../api/userApi';
 import NewOccasion from '../components/NewOccasion';
 
+
+
 const MyOccasions = () => {
     const { user } = useGlobalContext();
     const [occasions, setOccasions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const fetchMenus = async () => {
+    const fetchUsers = async () => {
         const userData = await getUser(user.email);
         setOccasions(userData.occasions);
         setIsLoading(false);
     }
 
     useEffect(() => {
-        fetchMenus();
+        fetchUsers();
     }, [user]);
 
     if (isLoading) {

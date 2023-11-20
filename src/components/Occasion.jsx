@@ -14,6 +14,10 @@ const Occasion = () => {
     useEffect(() => {
         const fetchMenu = async () => {
             const menuData = await getMenu(menuId);
+            console.log(menuData);
+            if (!menuData) {
+                navigate('/');
+            }
             setMenu(menuData);
             setDishes(menuData.dishes);
             setIsLoading(false);

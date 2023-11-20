@@ -1,7 +1,7 @@
 
 const Message = () => {
     return (
-        <div className='message'>Menu Updated</div>
+        <div className='message'>Successfully Updated</div>
     )
 }
 

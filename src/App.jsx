@@ -16,6 +16,7 @@ import {
 
 import SharedLayout from './components/SharedLayout';
 import Occasion from './components/Occasion';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const routes = [
   {
@@ -39,7 +40,7 @@ const routes = [
         children: [
           {
             path: ':dishId/edit',
-            element: <EditDish />,
+            element: <ProtectedRoute> <EditDish /> </ProtectedRoute>,
           }
         ]
       },
@@ -53,7 +54,7 @@ const routes = [
       },
       {
         path: ':menuId/add',
-        element: <AddDish />,
+        element: <ProtectedRoute><AddDish /> </ProtectedRoute>,
       },
       {
         path: 'Login',

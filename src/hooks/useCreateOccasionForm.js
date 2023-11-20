@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useGlobalContext } from "./useGlobalContext";
-import { addOccasion } from "../api/userApi";
+import { addOccasion, getUser } from "../api/userApi";
 import { useNavigate } from "react-router-dom";
 
 const useCreateOccasionForm = (dishes) => {
-    const { user } = useGlobalContext();
+    const { user, showToastError } = useGlobalContext();
     const navigate = useNavigate();
-
+    const [adminData, setAdminData] = useState({});
     const [checkedState, setCheckedState] = useState(new Array(50).fill(false));
     const [occasion, setOccasion] = useState({
         id: uuid().slice(0, 8),
@@ -24,6 +24,14 @@ const useCreateOccasionForm = (dishes) => {
         date: null,
         dishes: null,
     });
+    const fetchAdmin = async () => {
+        const data = await getUser("admin@gmail.com");
+        setAdminData(data);
+    }
+    useEffect(() => {
+        fetchAdmin();
+    }, []);
+
     const handleChange = (e) => {
         setOccasion({
             ...occasion,
@@ -79,8 +87,11 @@ const useCreateOccasionForm = (dishes) => {
         }
         setErrors(newErrors);
         if (isValid) {
-            addOccasion(occasion, user);
-            navigate('/myOccasions');
+            addOccasion(occasion, user, adminData);
+            navigate('/Message');
+        }
+        else {
+            showToastError('please check for errors in input fields');
         }
     }
     return { occasion, checkedState, errors, handleChange, handleSubmit, handleCheckedChange }
