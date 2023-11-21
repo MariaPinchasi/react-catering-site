@@ -73,16 +73,20 @@ const useCreateOccasionForm = (dishes) => {
 
         let isValid = true;
         const newErrors = {};
+        let errorMessage;
         if (occasion.guests < 5) {
             newErrors.guests = "We provide catering for at least 5 guests";
+            errorMessage = newErrors.guests;
             isValid = false;
         }
         if (checkedDishes.length < 3) {
             newErrors.dishes = "Must choose at least 3 dishes";
+            errorMessage = errorMessage ? errorMessage + ", " + newErrors.dishes : newErrors.dishes;
             isValid = false;
         }
         if (new Date(occasion.date) < new Date() || occasion.date === '') {
             newErrors.date = "Pick a future date";
+            errorMessage = errorMessage ? errorMessage + ", " + newErrors.date : newErrors.date;
             isValid = false;
         }
         setErrors(newErrors);
@@ -91,7 +95,7 @@ const useCreateOccasionForm = (dishes) => {
             navigate('/Message');
         }
         else {
-            showToastError('please check for errors in input fields');
+            showToastError(errorMessage);
         }
     }
     return { occasion, checkedState, errors, handleChange, handleSubmit, handleCheckedChange }
