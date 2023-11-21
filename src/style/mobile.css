@@ -64,14 +64,22 @@
     width: 28rem;
     margin: 0 auto;
   }
-  .input-group input {
+  .input-group input,
+  .input-group select {
     width: 28rem;
   }
   .update-btn {
     margin: 2rem 10rem;
   }
   .add-btn {
-    width: 25rem;
+    width: 15rem;
     margin: 1rem 5rem;
+  }
+  .occasions-list {
+    margin: 2rem 2rem;
+  }
+  .occasions-container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
   }
 }
