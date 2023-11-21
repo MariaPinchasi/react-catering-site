@@ -9,7 +9,7 @@ const Occasion = () => {
     const [menu, setMenu] = useState({});
     const [dishes, setDishes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const { user, isApiUpdates, setIsApiUpdates } = useGlobalContext();
+    const { user } = useGlobalContext();
 
     useEffect(() => {
         const fetchMenu = async () => {
@@ -23,11 +23,10 @@ const Occasion = () => {
             setIsLoading(false);
         }
         fetchMenu();
-    }, [menuId, isApiUpdates]);
+    }, [menuId]);
 
     const handleDelete = (dishId) => {
         deleteDish(menuId, dishId);
-        setIsApiUpdates(!isApiUpdates);
         navigate(`/Message`);
     }
     if (isLoading) {

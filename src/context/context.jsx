@@ -8,7 +8,6 @@ const userFromLocalStorage = localStorage.getItem('userData') ? JSON.parse(local
 
 export const AppProvider = ({ children }) => {
     const [user, setUser] = useState(userFromLocalStorage);
-    const [isApiUpdates, setIsApiUpdates] = useState(false);
 
     const showToastError = (message) => {
         toast.error(message, {
@@ -20,8 +19,6 @@ export const AppProvider = ({ children }) => {
             value={{
                 user,
                 setUser,
-                isApiUpdates,
-                setIsApiUpdates,
                 showToastError
             }}>
             {children}

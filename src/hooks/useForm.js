@@ -5,7 +5,7 @@ import { useGlobalContext } from './useGlobalContext';
 
 const useForm = (apiFunction, menuId) => {
     const navigate = useNavigate();
-    const { isApiUpdates, setIsApiUpdates } = useGlobalContext();
+    const { isApiUpdates } = useGlobalContext();
 
     const [dish, setDish] = useState({
         id: uuid().slice(0, 8),
@@ -59,7 +59,6 @@ const useForm = (apiFunction, menuId) => {
     };
 
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         let isValid = true;
@@ -80,7 +79,6 @@ const useForm = (apiFunction, menuId) => {
         setErrors(newErrors);
         if (isValid) {
             apiFunction(dish, menuId, dish.id);
-            setIsApiUpdates(!isApiUpdates);
             navigate(`/Message`);
         }
     };
