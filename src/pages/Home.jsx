@@ -10,9 +10,7 @@ const Home = () => {
                     <h2>straight from the field </h2>
                 </div>
             </section>
-            <section className="login-request">
-                <h1>LOGIN TO CREATE YOUR CUSTOM OCCASION</h1>
-            </section>
+
             <section className="options">
                 {optionsData.map(option => {
                     const { id, name, className, description, btnClass, url, btnText } = option;
