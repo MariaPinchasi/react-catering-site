@@ -100,7 +100,7 @@ h1 {
 .login-request {
   text-align: center;
   color: var(--background-grey);
-  animation: animate1 2s 100;
+  animation: animate1 3s 100;
 }
 @keyframes animate1 {
   0% {
@@ -108,6 +108,7 @@ h1 {
   }
   50% {
     background-color: var(--primary-color);
+    color: var(--white);
   }
 
   100% {
