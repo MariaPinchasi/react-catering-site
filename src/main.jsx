@@ -6,11 +6,14 @@ import { AppProvider } from './context/context.jsx'
 import './style/utilities.css'
 import './style/app.css'
 import './style/mobile.css'
+import { MenuProvider } from './context/menuContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AppProvider>
-      <App />
-    </AppProvider>
+    <MenuProvider>
+      <AppProvider>
+        <App />
+      </AppProvider>
+    </MenuProvider>
   </React.StrictMode>,
 )

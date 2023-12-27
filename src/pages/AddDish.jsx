@@ -1,11 +1,13 @@
 import useForm from "../hooks/useForm";
-import { addDish } from "../api/api";
 import Form from "../components/Form";
 import { useParams } from "react-router-dom";
+import { useGlobalMenuContext } from "../hooks/useGlobalMenuContext";
 
 const AddDish = () => {
   const { menuId } = useParams();
-  const { handleChange, handleSubmit, formData } = useForm(addDish, menuId)
+  const { handleAddDish } = useGlobalMenuContext();
+
+  const { handleChange, handleSubmit, formData } = useForm(handleAddDish, menuId)
 
   return (
     <div className="edit-dish-container">

@@ -3,9 +3,10 @@ import { v4 as uuid } from "uuid";
 import { useGlobalContext } from "./useGlobalContext";
 import { addOccasion, getUser } from "../api/userApi";
 import { useNavigate } from "react-router-dom";
+import { showToastError } from "../utils";
 
 const useCreateOccasionForm = (dishes) => {
-    const { user, showToastError } = useGlobalContext();
+    const { user } = useGlobalContext();
     const navigate = useNavigate();
     const [adminData, setAdminData] = useState({});
     const [checkedState, setCheckedState] = useState(new Array(50).fill(false));

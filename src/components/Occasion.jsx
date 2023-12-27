@@ -1,34 +1,19 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { deleteDish, getMenu } from "../api/api.js";
 import { useGlobalContext } from "../hooks/useGlobalContext";
+import { useGlobalMenuContext } from "../hooks/useGlobalMenuContext";
 
 const Occasion = () => {
     const { menuId } = useParams();
     const navigate = useNavigate();
-    const [menu, setMenu] = useState({});
-    const [dishes, setDishes] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+
     const { user } = useGlobalContext();
+    const { fetchMenu, menu, dishes, isLoading, handleDelete } = useGlobalMenuContext();
 
     useEffect(() => {
-        const fetchMenu = async () => {
-            const menuData = await getMenu(menuId);
-            console.log(menuData);
-            if (!menuData) {
-                navigate('/');
-            }
-            setMenu(menuData);
-            setDishes(menuData.dishes);
-            setIsLoading(false);
-        }
-        fetchMenu();
+        fetchMenu(menuId);
     }, [menuId]);
 
-    const handleDelete = (dishId) => {
-        deleteDish(menuId, dishId);
-        navigate(`/Message`);
-    }
     if (isLoading) {
         return <div className='message'>Loading...</div>
     }
@@ -54,7 +39,7 @@ const Occasion = () => {
                                     {user?.isAdmin &&
                                         <Link to={`/${menuId}/dishes/${id}/edit`} className="btn small-btn">Edit</Link>}
                                     {user?.isAdmin &&
-                                        <button onClick={() => handleDelete(id)} className="btn small-btn">Delete</button>}
+                                        <button onClick={() => handleDelete(menuId, id)} className="btn small-btn">Delete</button>}
                                 </div>
                             </article>
                         )

@@ -300,6 +300,7 @@ h1 {
 .occasions-list {
   margin: 2rem 5rem;
   text-align: center;
+  height: 70vh;
 }
 
 .occasions-container {

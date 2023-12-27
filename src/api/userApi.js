@@ -16,29 +16,41 @@ export const getUsers = async () => {
 }
 
 export const getUser = async (userEmail) => {
-    const users = await getUsers();
-    const user = users.find(user => user.email === userEmail);
-    return user;
+    try {
+        const users = await getUsers();
+        const user = users.find(user => user.email === userEmail);
+        return user;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const addOccasion = async (occasion, user, adminData) => {
-    const admin = { ...adminData };
-    const userData = { ...user };
-    admin.occasions.push({ ...occasion, userEmail: user.email });
-    userData.occasions.push(occasion);
-    axios.put(`${URL}/${user.id}`, userData);
-    axios.put(`${URL}/1`, admin);
+    try {
+        const admin = { ...adminData };
+        const userData = { ...user };
+        admin.occasions.push({ ...occasion, userEmail: user.email });
+        userData.occasions.push(occasion);
+        axios.put(`${URL}/${user.id}`, userData);
+        axios.put(`${URL}/1`, admin);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const approveOccasion = async (occasionId, userEmail) => {
-    const user = await getUser(userEmail);
-    const updatedOccasions = user.occasions.map((occasion) => {
-        if (occasion.id === occasionId) {
-            occasion.isApproved = true;
-        }
-        return occasion;
-    });
-    user.occasions = [...updatedOccasions];
-    axios.put(`${URL}/${user.id}`, user);
+    try {
+        const user = await getUser(userEmail);
+        const updatedOccasions = user.occasions.map((occasion) => {
+            if (occasion.id === occasionId) {
+                occasion.isApproved = true;
+            }
+            return occasion;
+        });
+        user.occasions = [...updatedOccasions];
+        axios.put(`${URL}/${user.id}`, user);
+    } catch (error) {
+        console.log(error);
+    }
 
 }

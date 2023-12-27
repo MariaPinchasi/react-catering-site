@@ -1,12 +1,15 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router'
-import { getDish, updateDish } from '../api/api';
+import { getDish } from '../api/api';
 import Form from '../components/Form';
 import useForm from '../hooks/useForm';
+import { useGlobalMenuContext } from '../hooks/useGlobalMenuContext';
 
 const EditDish = () => {
     const { menuId, dishId } = useParams();
-    const { handleChange, handleSubmit, setDish, formData } = useForm(updateDish, menuId)
+    const { handleUpdateDish } = useGlobalMenuContext();
+
+    const { handleChange, handleSubmit, setDish, formData } = useForm(handleUpdateDish, menuId)
 
     const fetchDish = async () => {
         const dishData = await getDish(menuId, dishId);

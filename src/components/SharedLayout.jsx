@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "./Navbar"
 import { useGlobalContext } from "../hooks/useGlobalContext";
+import { ToastContainer } from 'react-toastify';
 
 
 const SharedLayout = () => {
@@ -20,6 +21,8 @@ const SharedLayout = () => {
                     <p>Za'afran Catering &copy; 2023, All RIghts Reserved</p>
                 </footer>
             </div>
+            <ToastContainer />
+
         </>
     )
 }

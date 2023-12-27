@@ -3,7 +3,6 @@ import { getAllMenus } from '../api/api';
 import useCreateOccasionForm from '../hooks/useCreateOccasionForm';
 import Input from '../components/Input';
 import { occasionsTypes } from '../data/data';
-import { ToastContainer } from 'react-toastify';
 
 const CreateOccasion = () => {
 
@@ -77,7 +76,6 @@ const CreateOccasion = () => {
                 <Input label='Special Notes' type='text' name='notes' value={occasion.notes} error={errors.notes} handleChange={handleChange} />
                 <button className="btn update-btn" type="submit">Create</button>
             </form>
-            <ToastContainer />
         </div>
     )
 

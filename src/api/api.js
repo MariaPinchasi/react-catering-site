@@ -7,6 +7,7 @@ export const getAllMenus = async () => {
         return res.data;
     } catch (error) {
         console.log(error);
+        return;
     }
 }
 export const getMenu = async (menuId) => {
@@ -19,34 +20,49 @@ export const getMenu = async (menuId) => {
 }
 
 export const getDish = async (menuId, dishId) => {
-    const menuData = await getMenu(menuId);
-    const dishToEdit = menuData.dishes.find(dish => (dish.id).toString() === dishId.toString());
-    return dishToEdit;
+    try {
+        const menuData = await getMenu(menuId);
+        const dishToEdit = menuData.dishes.find(dish => (dish.id).toString() === dishId.toString());
+        return dishToEdit;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const updateDish = async (dish, menuId, dishId) => {
-    const menuData = await getMenu(menuId);
-    let dishToUpdateIndex;
-    const dishToUpdate = menuData.dishes.find((currentDish, i) => {
-        if ((currentDish.id).toString() === dishId.toString()) {
-            dishToUpdateIndex = i;
-            return currentDish;
-        }
-    });
-    menuData.dishes[dishToUpdateIndex] = dish;
-    axios.put(`${URL}/${menuId}`, menuData);
+    try {
+        const menuData = await getMenu(menuId);
+        let dishToUpdateIndex;
+        const dishToUpdate = menuData.dishes.find((currentDish, i) => {
+            if ((currentDish.id).toString() === dishId.toString()) {
+                dishToUpdateIndex = i;
+                return currentDish;
+            }
+        });
+        menuData.dishes[dishToUpdateIndex] = dish;
+        await axios.put(`${URL}/${menuId}`, menuData);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const addDish = async (dish, menuId) => {
-    // const menuId = JSON.parse(localStorage.getItem('menuType'));
-    const menuData = await getMenu(menuId);
-    menuData.dishes.push(dish);
-    axios.put(`${URL}/${menuId}`, menuData);
+    try {
+        const menuData = await getMenu(menuId);
+        menuData.dishes.push(dish);
+        await axios.put(`${URL}/${menuId}`, menuData);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const deleteDish = async (menuId, dishId) => {
-    const menuData = await getMenu(menuId);
-    const remainingDishes = menuData.dishes.filter(dish => (dish.id).toString() !== dishId.toString());
-    menuData.dishes = remainingDishes;
-    axios.put(`${URL}/${menuId}`, menuData);
+    try {
+        const menuData = await getMenu(menuId);
+        const remainingDishes = menuData.dishes.filter(dish => (dish.id).toString() !== dishId.toString());
+        menuData.dishes = remainingDishes;
+        await axios.put(`${URL}/${menuId}`, menuData);
+    } catch (error) {
+        console.log(error);
+    }
 }
