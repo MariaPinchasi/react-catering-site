@@ -1,6 +1,11 @@
 import { useState } from "react";
+import { useGlobalContext } from "./useGlobalContext";
+import { useNavigate } from 'react-router'
 
-const useUserForm = (apiFunction, type) => {
+const useUserForm = (type) => {
+    const { login, register, setUserErr } = useGlobalContext();
+
+    const navigate = useNavigate();
 
     const [userFormData, setUserFormData] = useState({
         name: "",
@@ -52,6 +57,7 @@ const useUserForm = (apiFunction, type) => {
                 ...prevState,
                 [e.target.name]: null
             }));
+        setUserErr('');
     };
 
 
@@ -74,7 +80,14 @@ const useUserForm = (apiFunction, type) => {
         }
         setErrors(newErrors);
         if (isValid) {
-            apiFunction(userFormData);
+            if (type === 'login') {
+                login(userFormData, navigate);
+            }
+            else {
+                register(userFormData, navigate);
+
+            }
+
         }
     };
     return { handleChange, handleSubmit, formDataReg, formDataLog }

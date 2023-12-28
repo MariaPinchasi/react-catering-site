@@ -1,33 +1,11 @@
-import { getUser } from "../api/userApi";
 import Form from "../components/Form";
 import useUserForm from "../hooks/useUserForm";
 import { useGlobalContext } from "../hooks/useGlobalContext";
-import { useNavigate } from 'react-router'
-import { useState } from "react";
 
 const Login = () => {
-    const { setUser } = useGlobalContext();
-    const navigate = useNavigate();
+    const { userErr } = useGlobalContext();
 
-    const [userErr, setUserErr] = useState('');
-
-    const login = async (userFormData) => {
-        const userData = await getUser(userFormData.email);
-        if (!userData) {
-            setUserErr("Email does not exist in our systems, Please register");
-        }
-        else {
-            if (userData.password !== userFormData.password) {
-                setUserErr("Password doesn't match the email provided");
-            }
-            else {
-                localStorage.setItem('userData', JSON.stringify(userData))
-                setUser(userData);
-                navigate('/');
-            }
-        }
-    }
-    const { handleChange, handleSubmit, formDataLog } = useUserForm(login, 'login')
+    const { handleChange, handleSubmit, formDataLog } = useUserForm('login')
 
     return (
         <section className="edit-dish-container">

@@ -1,24 +1,11 @@
-import { useState } from "react";
-import { getUser, postUser } from "../api/userApi";
 import Form from "../components/Form";
 import useUserForm from "../hooks/useUserForm";
-import { useNavigate } from 'react-router'
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 const Register = () => {
-    const navigate = useNavigate();
-    const [userErr, setUserErr] = useState('');
+    const { userErr } = useGlobalContext();
 
-    const register = async (userFormData) => {
-        const registeredUser = await getUser(userFormData.email);
-        if (registeredUser) {
-            setUserErr('Email found in our system, please log in');
-        }
-        else {
-            postUser(userFormData);
-            navigate('/Login');
-        }
-    }
-    const { handleChange, handleSubmit, formDataReg } = useUserForm(register)
+    const { handleChange, handleSubmit, formDataReg } = useUserForm();
 
     return (
         <section className="edit-dish-container">
